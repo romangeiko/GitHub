@@ -20,20 +20,15 @@
       do 5 m=1, kk
       P(m)=a+(m-1)*hh
       t=P(m)
-
-      do 2, l=1, k
       f=0.
+      do 2, l=1, k
+      
       do 3, j=1, k
       if (j .ne. l) then
-      G(l)=G(l)*(t-X(j))
+      G(l)=G(l)*(t-X(j))/(X(l)-X(j))
       endif
 3     continue
 
-      do 4, n=1, k
-      if (n .ne. l) then
-      G(l)=G(l)/(X(l)-X(n))
-      endif
-4     continue
       f=f+Y(l)*G(l)
 2     continue
       write (10, *) P(m), f
